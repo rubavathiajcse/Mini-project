@@ -1,0 +1,90 @@
+package j12;
+    import java.util.Scanner;
+    public class ATM{
+    public int accbal;
+        public ATM(int bal)
+          {
+            accbal=bal;
+          }
+       public void withdraw(int amount)
+          {
+            if(accbal>amount)
+              {
+                accbal = accbal-amount;
+                System.out.println("WITHDRAW SUCCESS");
+               }
+            else
+              {
+                System.out.println("INSUFFICIENT FUND");
+               }
+           }
+       public void deposit(int amount)
+          {
+             accbal = accbal+amount;
+             System.out.println("DEPOSIT SUCCESS");
+           }
+       public void balanceenq()
+           {
+             System.out.println(" AVAILABLE BALANCE:Rs."+accbal);
+    		}
+       public static void main(String[] args)
+           {
+    	   
+    	   Scanner sc = new Scanner(System.in);
+    		  System.out.println("GENERATE YOUR FIRST PIN:");
+    		  int pin =sc.nextInt();
+    		  System.out.println("ENTER YOUR PIN:");
+    		  int n =sc.nextInt();
+    	     if( pin ==n)
+    		  {
+    			  System.out.println("LOGIN SUCCESSFULLY");
+    			  System.out.println("------------------------------------");
+             System.out.print(" ENTER THE OPENING BALANCE: ");
+             int balance = sc.nextInt();
+             ATM mybank = new ATM (balance);
+             mybank.balanceenq();
+             while(true)
+             {
+             System.out.println("------------------------------------");
+             System.out.println("BANKINGAPPLICATION");
+             System.out.println("---------------------------------");
+             System.out.println(" 1. Deposit");
+             System.out.println(" 2. Withdraw");
+             System.out.println(" 3. Balance Enquory");
+             System.out.println(" 4. exit");
+                int choice = sc.nextInt();
+                   if (choice==4)
+                        {
+                          System.out.println("Thank you forBanking with Us!!!");
+                          break;
+                         }
+                         switch(choice)
+                           {
+                           case 1:
+                                  System.out.print("Enter amount for deposit:");
+                                  int damt = sc.nextInt();
+                                  mybank.deposit(damt);
+                                  break;
+                          case 2:
+                                  System.out.print("Enter amount for withdraw:");
+                                  int wamt =sc.nextInt();
+                                  mybank.withdraw(wamt);
+                                  break;
+                          case 3:
+                                  mybank.balanceenq();
+                                  break;
+                         default:
+                                  System.out.println("Invalid Choice!! Tryagain");
+                            }
+                 System.out.println("------------------------------------\n\n");
+      }
+    
+    }
+  	 else
+	  {
+		 System.out.println("Pin invalide");
+		 System.out.println("Thank you forBanking with Us!!!");
+	  } 
+    sc.close();
+	  }
+	 
